@@ -1,0 +1,17 @@
+
+name: demo api
+variables:
+    var1: value1
+    var2: value2
+request:
+    url: http://172.16.1.107:9088/user/login
+    method: POST
+    headers:
+        Content-Type: "application/json"
+    data:
+        username: ${ENV(USERNAME)}
+        password: ${ENV(PASSWORD)}
+validate:
+    - eq: ["status_code", 200]
+extract:
+    - uname: content.username
